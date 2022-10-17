@@ -25,13 +25,44 @@ router.get('/', async (req, res) => {
 });
 
 // get one product
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
+    try  {
+      const productSpecific = await Product.findOne({
+        where: {id: req.params.id},
+        attributes: ['id', 'product_name'],
+        include: [{
+          model: Category,
+          attributes: ['category_name', 'id']
+        }, {
+          model: Tag,
+          attributes: ['tag_name', 'id']
+        }],
+      });
+      if (!productSpecific) {
+        res.status(404).json({message: 'No Product found with this specific id!'})
+      };
+      res.status(200).json(productSpecific);
+    } catch (err) {
+      res.status(500).json(err)
+    }
 });
 
 // create new product
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
+  try {
+    const newProduct = await Product.create({
+      product_name: req.body.product_name,
+      price: req.body.price,
+      stock: req.body.stock,
+      tagIds: req.body.tag_id
+    })
+    res.status(200).json(newProduct);
+  } catch (err) {
+    res.status(500).json(err)
+  }
+}); 
   /* req.body should look like this...
     {
       product_name: "Basketball",
@@ -60,7 +91,7 @@ router.post('/', (req, res) => {
       console.log(err);
       res.status(400).json(err);
     });
-});
+
 
 // update product
 router.put('/:id', (req, res) => {
@@ -104,8 +135,19 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
   // delete one product by its `id` value
+  try {
+    const deleteProduct = await Product.destroy({
+      where: {id: req.params.id}
+    });
+    if (!deleteProduct) {
+      res.status(404).json({message: 'Product you are trying to delete does not exist!'})
+    }
+    res.status(200).json(deleteProduct);
+  } catch {
+    res.status(500).json(err)
+  }
 });
 
 module.exports = router;

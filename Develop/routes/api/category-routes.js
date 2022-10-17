@@ -30,7 +30,7 @@ router.get('/:id', async (req, res) => {
       }],
     });
     if (!itemSpecific) {
-      res.status(404).json({message: 'Not Category found with this specific id!'})
+      res.status(404).json({message: 'No Category found with this specific id!'})
     };
     res.status(200).json(itemSpecific);
   } catch (err) {
