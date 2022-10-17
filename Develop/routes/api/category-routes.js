@@ -60,7 +60,7 @@ router.put('/:id', async (req, res) => {
       res.status(404).json({message: 'Category does not exist!'})
     }
     res.status(200).json(updateCategory);
-  } catch {
+  } catch (err) {
     res.status(500).json(err)
   }
 });
@@ -75,7 +75,7 @@ router.delete('/:id', async (req, res) => {
       res.status(404).json({message: 'Category you are trying to delete does not exist!'})
     }
     res.status(200).json(deleteCategory);
-  } catch {
+  } catch (err) {
     res.status(500).json(err)
   }
 });
