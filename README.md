@@ -27,8 +27,8 @@ THEN I am able to successfully create, update, and delete data in my database
 
 ## SCREENSHOTS:
 ---
-<img src="./Assets/SC1.png" alt="Screenshot of Start Application loading into console.">
-<img src="./Assets/SC2.png" alt="Screenshot of View Employees table showcasing all employee info">
+<img src="./Assets/IMGS/SC1.png" alt="Get request in Categories">
+<img src="./Assets/IMGS/SC2.png" alt="Get request in Products">
 
 ## LICENSE:
 --- 
