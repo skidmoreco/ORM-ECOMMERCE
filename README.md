@@ -23,7 +23,7 @@ THEN I am able to successfully create, update, and delete data in my database
 ## Live Site: 
 ---
 [GitHub pages](https://github.com/skidmoreco/ORM-ECOMMERCE)
-[Google Drive Link](https://drive.google.com/file/d/1Py_aLS7SkUIapnNmT9OlQ_DeLrPADyQB/view)
+[Google Drive Link](https://drive.google.com/file/d/1S9icKORJUX6gixqxFCIEBVw6iSGh0WO3/view)
 
 ## SCREENSHOTS:
 ---
